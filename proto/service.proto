@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package reports;
+
+// The service definition.
+service Reports {
+  rpc Health (PingRequest) returns (PingReply) {}
+  rpc ActSummary (Request) returns (Reply) {}
+  rpc ControlSummary (Request) returns (Reply) {}
+  rpc Clinician (Request) returns (Reply) {}
+  rpc Research (Request) returns (Reply) {}
+}
+
+message User {
+  string FirstName = 1;
+  string LastName = 2;
+  string Username = 3;
+  string Email = 4;
+}
+message PingRequest {}
+message Request {
+  repeated string Mrns = 1;
+  User user = 2;
+}
+message PingReply {
+  string Status = 1;
+}
+message Reply {
+  string FileName = 1;
+}
